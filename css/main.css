@@ -9,11 +9,8 @@ nav ul, footer ul {
     font-weight: bold;
 }
 .topnav-centered li {
-  float: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  float: left;
+   align-content:center;  
 }
 
 /*/nav ul li, footer ul li {
