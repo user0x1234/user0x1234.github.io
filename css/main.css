@@ -8,13 +8,14 @@ nav ul, footer ul {
     list-style: none;
     font-weight: bold;
 }
-nav ul li a{
- float: none;
+.topnav-centered a {
+  float: none;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 /*/nav ul li, footer ul li {
     float:left;
     margin-right: 20px;
