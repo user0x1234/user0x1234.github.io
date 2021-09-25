@@ -8,16 +8,12 @@ nav ul, footer ul {
     list-style: none;
     font-weight: bold;
 }
-.topnav-centered li {
-  float: left;
-   align-content:center;  
-}
 
-/*/nav ul li, footer ul li {
+nav ul li, footer ul li {
     float:left;
     margin-right: 20px;
     align-content:center;
-}*/
+}
 a {
     text-decoration: none;
     color: #999;
