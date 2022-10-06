@@ -20,12 +20,14 @@
       "outputPath": "D:\\Sapienza\\SapienzaCourses\\Statistics\\Blog\\user0x1234.github.io\\code\\HomeWork1\\DynamicControl\\DynamicControl\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Andrea\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Andrea\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0-windows"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
