@@ -11,11 +11,11 @@ namespace DynamicControl
         {
             int startPosition = 100;
             int endPosition = 10;
-            for (int i = 0; i<=7; i++)
+            for (int i = 0; i<=4; i++)
             {
                 Label l = addLabel(i, startPosition, endPosition);
                 this.Controls.Add(l);
-                endPosition += 70;
+                endPosition += 100;
             }
         }
 
