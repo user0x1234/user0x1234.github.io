@@ -1,0 +1,17 @@
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\bin\Debug\net6.0-windows\WinFormsApp1.exe
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\bin\Debug\net6.0-windows\WinFormsApp1.deps.json
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\bin\Debug\net6.0-windows\WinFormsApp1.runtimeconfig.json
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\bin\Debug\net6.0-windows\WinFormsApp1.dll
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\bin\Debug\net6.0-windows\WinFormsApp1.pdb
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.csproj.AssemblyReference.cache
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.Form1.resources
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.csproj.GenerateResource.cache
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.GeneratedMSBuildEditorConfig.editorconfig
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.AssemblyInfoInputs.cache
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.AssemblyInfo.cs
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.csproj.CoreCompileInputs.cache
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.dll
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\obj\Debug\net6.0-windows\refint\WinFormsApp1.dll
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.pdb
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\obj\Debug\net6.0-windows\WinFormsApp1.genruntimeconfig.cache
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork1\movingObjects\WinFormsApp1\obj\Debug\net6.0-windows\ref\WinFormsApp1.dll
