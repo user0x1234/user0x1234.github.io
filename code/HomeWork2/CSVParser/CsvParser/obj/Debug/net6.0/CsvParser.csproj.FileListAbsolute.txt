@@ -1,0 +1,15 @@
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\CsvParser\CsvParser\bin\Debug\net6.0\CsvParser.exe
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\CsvParser\CsvParser\bin\Debug\net6.0\CsvParser.deps.json
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\CsvParser\CsvParser\bin\Debug\net6.0\CsvParser.runtimeconfig.json
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\CsvParser\CsvParser\bin\Debug\net6.0\CsvParser.dll
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\CsvParser\CsvParser\bin\Debug\net6.0\CsvParser.pdb
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\CsvParser\CsvParser\obj\Debug\net6.0\CsvParser.csproj.AssemblyReference.cache
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\CsvParser\CsvParser\obj\Debug\net6.0\CsvParser.GeneratedMSBuildEditorConfig.editorconfig
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\CsvParser\CsvParser\obj\Debug\net6.0\CsvParser.AssemblyInfoInputs.cache
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\CsvParser\CsvParser\obj\Debug\net6.0\CsvParser.AssemblyInfo.cs
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\CsvParser\CsvParser\obj\Debug\net6.0\CsvParser.csproj.CoreCompileInputs.cache
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\CsvParser\CsvParser\obj\Debug\net6.0\CsvParser.dll
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\CsvParser\CsvParser\obj\Debug\net6.0\refint\CsvParser.dll
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\CsvParser\CsvParser\obj\Debug\net6.0\CsvParser.pdb
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\CsvParser\CsvParser\obj\Debug\net6.0\CsvParser.genruntimeconfig.cache
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\CsvParser\CsvParser\obj\Debug\net6.0\ref\CsvParser.dll

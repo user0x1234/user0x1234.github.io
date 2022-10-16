@@ -1,0 +1,11 @@
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\LineGraphDistribution\LineGraphDistribution\bin\Debug\LineGraphDistribution.exe.config
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\LineGraphDistribution\LineGraphDistribution\bin\Debug\LineGraphDistribution.exe
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\LineGraphDistribution\LineGraphDistribution\bin\Debug\LineGraphDistribution.pdb
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\LineGraphDistribution\LineGraphDistribution\obj\Debug\LineGraphDistribution.csproj.AssemblyReference.cache
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\LineGraphDistribution\LineGraphDistribution\obj\Debug\LineGraphDistribution.csproj.SuggestedBindingRedirects.cache
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\LineGraphDistribution\LineGraphDistribution\obj\Debug\LineGraphDistribution.Form1.resources
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\LineGraphDistribution\LineGraphDistribution\obj\Debug\LineGraphDistribution.Properties.Resources.resources
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\LineGraphDistribution\LineGraphDistribution\obj\Debug\LineGraphDistribution.csproj.GenerateResource.cache
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\LineGraphDistribution\LineGraphDistribution\obj\Debug\LineGraphDistribution.csproj.CoreCompileInputs.cache
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\LineGraphDistribution\LineGraphDistribution\obj\Debug\LineGraphDistribution.exe
+D:\Sapienza\SapienzaCourses\Statistics\Blog\user0x1234.github.io\code\HomeWork2\LineGraphDistribution\LineGraphDistribution\obj\Debug\LineGraphDistribution.pdb
