@@ -1,3 +1,10 @@
 name : Mr.Hat
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
+# Configurazione Kramdown per le formule LaTeX con MathJax
+kramdown:
+  input: GFM  # GitHub Flavored Markdown (se necessario)
+  math_engine: mathjax
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
