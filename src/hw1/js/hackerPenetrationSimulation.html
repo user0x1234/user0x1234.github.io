@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Penetration Simulation</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="2000" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let n = Math.floor(Math.random() * 1) + 10;  // Random number of servers between 10 and 20
+        let m = Math.floor(Math.random() * 41) + 10;  // Random number of attackers between 10 and 50
+        let p = Math.random() * 0.8 + 0.1; // Random probability between 0.1 and 0.9
+        let serverWidth = 600 / n;   // Adjust width between servers
+        let levelHeight = 30;   // Height jump for penetration
+        let xOffset = 50; // X offset for the chart
+        let levelCount = new Array(n + 1).fill(0); // Array to store count of attackers reaching each level
+
+        function drawSimulation() {
+            for (let attacker = 0; attacker < m; attacker++) {
+                let xPosition = xOffset;
+                let yPosition = 400;
+                let currentLevel = 0; // Start from level 0 for each attacker
+
+                for (let server = 0; server < n; server++) {
+                    // Random penetration simulation
+                    let penetrated = Math.random() < p;
+
+                    if (penetrated) {
+                        // Draw jump
+                        ctx.strokeStyle = "red";
+                        ctx.beginPath();
+                        ctx.moveTo(xPosition, yPosition);
+                        ctx.lineTo(xPosition + serverWidth, yPosition - levelHeight);
+                        ctx.stroke();
+                        yPosition -= levelHeight;
+                        currentLevel++; // Move to the next level
+                    } else {
+                        // Draw flat line
+                        ctx.strokeStyle = "blue";
+                        ctx.beginPath();
+                        ctx.moveTo(xPosition, yPosition);
+                        ctx.lineTo(xPosition + serverWidth, yPosition);
+                        ctx.stroke();
+                    }
+
+                    xPosition += serverWidth;
+                }
+
+                // Update level count for this attacker
+                levelCount[currentLevel]++;
+            }
+
+            // Draw the vertical histogram at the end of the chart
+            drawVerticalHistogram(xOffset + n * serverWidth);
+        }
+
+        function drawVerticalHistogram(startX) {
+            let barWidth = 30; // Width of each histogram bar
+            let maxHeight = 300; // Maximum height of a histogram bar
+            let startY = 400; // Starting y-position for the histogram (bottom)
+            let gapBetweenBars = 10;
+
+            // Find the maximum count to scale the bars
+            let maxCount = Math.max(...levelCount);
+
+            // Draw each bar in the histogram
+            for (let i = 0; i <= n; i++) {
+                // Calculate bar height proportionally
+                let barHeight = (levelCount[i] / maxCount) * maxHeight;
+
+                // Draw the vertical bar for the current penetration level
+                ctx.fillStyle = "green";
+                ctx.fillRect(startX + i * (barWidth + gapBetweenBars), startY - barHeight, barWidth, barHeight);
+
+                // Draw the count above the bar
+                ctx.fillStyle = "black";
+                ctx.fillText(levelCount[i], startX + i * (barWidth + gapBetweenBars), startY - barHeight - 10);
+
+                // Label the penetration level under the bar
+                ctx.fillText(i, startX + i * (barWidth + gapBetweenBars), startY + 15);
+            }
+
+            // Display random n, m, and p on the canvas
+            ctx.fillText(`Servers: ${n}, Attackers: ${m}, Probability: ${p.toFixed(2)}`, 20, 20);
+        }
+
+        drawSimulation();
+    </script>
+</body>
+</html>
