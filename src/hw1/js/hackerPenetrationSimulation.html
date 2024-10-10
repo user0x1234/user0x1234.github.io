@@ -7,92 +7,130 @@
     <style>
         canvas {
             border: 1px solid black;
+            margin-bottom: 20px; /* Separazione tra i canvas */
         }
     </style>
 </head>
 <body>
-    <canvas id="myCanvas" width="2000" height="600"></canvas>
+    <!-- Canvas per la simulazione -->
+    <canvas id="simulationCanvas"></canvas>
+    
+    <!-- Canvas per l'istogramma -->
+    <canvas id="histogramCanvas"></canvas>
+
     <script>
-        const canvas = document.getElementById("myCanvas");
-        const ctx = canvas.getContext("2d");
+        const simulationCanvas = document.getElementById("simulationCanvas");
+        const simulationCtx = simulationCanvas.getContext("2d");
 
-        let n = Math.floor(Math.random() * 1) + 10;  // Random number of servers between 10 and 20
-        let m = Math.floor(Math.random() * 41) + 10;  // Random number of attackers between 10 and 50
-        let p = Math.random() * 0.8 + 0.1; // Random probability between 0.1 and 0.9
-        let serverWidth = 600 / n;   // Adjust width between servers
-        let levelHeight = 30;   // Height jump for penetration
-        let xOffset = 50; // X offset for the chart
-        let levelCount = new Array(n + 1).fill(0); // Array to store count of attackers reaching each level
+        const histogramCanvas = document.getElementById("histogramCanvas");
+        const histogramCtx = histogramCanvas.getContext("2d");
 
+        // Parametri casuali
+        let n = Math.floor(Math.random() * 41) + 10;  // Numero casuale di server tra 10 e 50
+        let m = Math.floor(Math.random() * 41) + 10;  // Numero casuale di attaccanti tra 10 e 50
+        let p = Math.random() * 0.8 + 0.1;            // Probabilità casuale tra 0.1 e 0.9
+
+        let serverWidth = 40;      // Larghezza costante tra i server
+        let levelHeight = 30;      // Altezza del salto per penetrazione
+        let canvasWidth = n * serverWidth + 100;  // Larghezza dinamica del canvas
+        let canvasHeight = 400;    // Altezza fissa del grafico della simulazione
+
+        // Imposta la dimensione del canvas in base al numero di server
+        simulationCanvas.width = canvasWidth;
+        simulationCanvas.height = canvasHeight;
+
+        // Imposta la dimensione del canvas per l'istogramma
+        histogramCanvas.width = canvasWidth;
+        histogramCanvas.height = 500;
+
+        let levelCount = new Array(n + 1).fill(0); // Conteggio dei livelli raggiunti
+
+        // Funzione per generare colori casuali
+        function getRandomColor() {
+            let letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Funzione per disegnare la simulazione
         function drawSimulation() {
+            let xOffset = 50; // Offset orizzontale per il grafico
+
             for (let attacker = 0; attacker < m; attacker++) {
                 let xPosition = xOffset;
                 let yPosition = 400;
-                let currentLevel = 0; // Start from level 0 for each attacker
+                let currentLevel = 0; // Inizia al livello 0 per ogni attaccante
+
+                let attackerColor = getRandomColor(); // Colore casuale per l'attaccante
 
                 for (let server = 0; server < n; server++) {
-                    // Random penetration simulation
+                    // Simulazione della penetrazione
                     let penetrated = Math.random() < p;
 
                     if (penetrated) {
-                        // Draw jump
-                        ctx.strokeStyle = "red";
-                        ctx.beginPath();
-                        ctx.moveTo(xPosition, yPosition);
-                        ctx.lineTo(xPosition + serverWidth, yPosition - levelHeight);
-                        ctx.stroke();
+                        // Disegna salto
+                        simulationCtx.strokeStyle = attackerColor;
+                        simulationCtx.beginPath();
+                        simulationCtx.moveTo(xPosition, yPosition);
+                        simulationCtx.lineTo(xPosition + serverWidth, yPosition - levelHeight);
+                        simulationCtx.stroke();
                         yPosition -= levelHeight;
-                        currentLevel++; // Move to the next level
+                        currentLevel++; // Incrementa il livello
                     } else {
-                        // Draw flat line
-                        ctx.strokeStyle = "blue";
-                        ctx.beginPath();
-                        ctx.moveTo(xPosition, yPosition);
-                        ctx.lineTo(xPosition + serverWidth, yPosition);
-                        ctx.stroke();
+                        // Disegna linea piatta
+                        simulationCtx.strokeStyle = attackerColor;
+                        simulationCtx.beginPath();
+                        simulationCtx.moveTo(xPosition, yPosition);
+                        simulationCtx.lineTo(xPosition + serverWidth, yPosition);
+                        simulationCtx.stroke();
                     }
 
                     xPosition += serverWidth;
                 }
 
-                // Update level count for this attacker
+                // Aggiorna conteggio livelli
                 levelCount[currentLevel]++;
             }
 
-            // Draw the vertical histogram at the end of the chart
-            drawVerticalHistogram(xOffset + n * serverWidth);
+            // Disegna l'istogramma alla fine della simulazione
+            drawVerticalHistogram();
         }
 
-        function drawVerticalHistogram(startX) {
-            let barWidth = 30; // Width of each histogram bar
-            let maxHeight = 300; // Maximum height of a histogram bar
-            let startY = 400; // Starting y-position for the histogram (bottom)
-            let gapBetweenBars = 10;
+        // Funzione per disegnare l'istogramma verticale
+        function drawVerticalHistogram() {
+            let barWidth = 30;       // Larghezza di ciascuna barra dell'istogramma
+            let maxHeight = 250;     // Altezza massima di una barra
+            let startY = 450;        // Posizione y di partenza (in basso)
+            let gapBetweenBars = 10; // Distanza tra le barre
 
-            // Find the maximum count to scale the bars
+            // Trova il conteggio massimo per scalare le barre
             let maxCount = Math.max(...levelCount);
 
-            // Draw each bar in the histogram
+            // Disegna ogni barra dell'istogramma
             for (let i = 0; i <= n; i++) {
-                // Calculate bar height proportionally
+                // Altezza della barra proporzionale
                 let barHeight = (levelCount[i] / maxCount) * maxHeight;
 
-                // Draw the vertical bar for the current penetration level
-                ctx.fillStyle = "green";
-                ctx.fillRect(startX + i * (barWidth + gapBetweenBars), startY - barHeight, barWidth, barHeight);
+                // Disegna la barra verticale per il livello corrente
+                histogramCtx.fillStyle = "green";
+                histogramCtx.fillRect(50 + i * (barWidth + gapBetweenBars), startY - barHeight, barWidth, barHeight);
 
-                // Draw the count above the bar
-                ctx.fillStyle = "black";
-                ctx.fillText(levelCount[i], startX + i * (barWidth + gapBetweenBars), startY - barHeight - 10);
+                // Disegna il conteggio sopra la barra
+                histogramCtx.fillStyle = "black";
+                histogramCtx.fillText(levelCount[i], 50 + i * (barWidth + gapBetweenBars), startY - barHeight - 10);
 
-                // Label the penetration level under the bar
-                ctx.fillText(i, startX + i * (barWidth + gapBetweenBars), startY + 15);
+                // Etichetta il livello di penetrazione sotto la barra
+                histogramCtx.fillText(i, 50 + i * (barWidth + gapBetweenBars), startY + 20);
             }
 
-            // Display random n, m, and p on the canvas
-            ctx.fillText(`Servers: ${n}, Attackers: ${m}, Probability: ${p.toFixed(2)}`, 20, 20);
+            // Mostra i parametri della simulazione
+            histogramCtx.fillText(`Servers: ${n}, Attackers: ${m}, Probability: ${p.toFixed(2)}`, 20, 20);
         }
 
+        // Avvia la simulazione
         drawSimulation();
     </script>
 </body>
