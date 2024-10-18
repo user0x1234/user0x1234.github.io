@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDE Euler-Maruyama Simulation</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+        input {
+            margin: 10px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Euler-Maruyama SDE Simulation with Random Walk</h1>
+        
+        <label for="numSteps">Number of Time Steps: </label>
+        <input type="number" id="numSteps" value="1000">
+        <br>
+        
+        <label for="probJump">Probability of Jump (p): </label>
+        <input type="number" id="probJump" step="0.01" value="0.5">
+        <br>
+        
+        <label for="stepSize">Step Size (Δt): </label>
+        <input type="number" id="stepSize" step="0.01" value="0.01">
+        <br>
+        
+        <button onclick="runSimulation()">Run Simulation</button>
+
+        <h2>Trajectory</h2>
+        <canvas id="myCanvas" width="800" height="400"></canvas>
+        
+        <h2>Frequency Distribution (Final State)</h2>
+        <canvas id="histogramCanvas" width="800" height="400"></canvas>
+
+        <h3>Mean and Variance:</h3>
+        <p id="meanVariance"></p>
+    </div>
+
+    <script>
+        function runSimulation() {
+            const numSteps = document.getElementById("numSteps").value;
+            const probJump = document.getElementById("probJump").value;
+            const stepSize = document.getElementById("stepSize").value;
+            const canvas = document.getElementById("myCanvas");
+            const ctx = canvas.getContext("2d");
+            const histCanvas = document.getElementById("histogramCanvas");
+            const histCtx = histCanvas.getContext("2d");
+
+            // Clear previous drawings
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            histCtx.clearRect(0, 0, histCanvas.width, histCanvas.height);
+
+            let x = 0; // Initial position
+            let trajectory = [x];
+            let frequencies = {}; // To track the frequency of visiting each state
+            let steps = parseInt(numSteps);
+            let stepProb = parseFloat(probJump);
+            let deltaT = parseFloat(stepSize);
+
+            // Simulate the random walk
+            for (let i = 1; i <= steps; i++) {
+                let jump = Math.random() < stepProb ? 1 : -1;
+                x += jump * deltaT; // Update position based on random walk
+                trajectory.push(x);
+
+                // Track the frequency
+                if (!frequencies[x]) frequencies[x] = 0;
+                frequencies[x]++;
+            }
+
+            drawTrajectory(ctx, trajectory, canvas.width, canvas.height);
+            drawHistogram(histCtx, frequencies, histCanvas.width, histCanvas.height);
+
+            // Calculate mean and variance
+            let { mean, variance } = calculateMeanVariance(frequencies);
+            document.getElementById('meanVariance').textContent = `Mean: ${mean.toFixed(2)}, Variance: ${variance.toFixed(2)}`;
+        }
+
+        function drawTrajectory(ctx, trajectory, width, height) {
+            ctx.strokeStyle = "blue";
+            ctx.beginPath();
+
+            // Add grid
+            ctx.strokeStyle = '#ddd';
+            for (let i = 0; i < width; i += 50) {
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, height);
+            }
+            for (let i = 0; i < height; i += 50) {
+                ctx.moveTo(0, i);
+                ctx.lineTo(width, i);
+            }
+            ctx.stroke();
+
+            // Scale and plot trajectory
+            ctx.strokeStyle = "blue";
+            ctx.beginPath();
+            let max = Math.max(...trajectory);
+            let min = Math.min(...trajectory);
+            let range = max - min;
+            let scaleX = width / trajectory.length;
+            let scaleY = height / range;
+
+            trajectory.forEach((value, index) => {
+                let x = index * scaleX;
+                let y = height - (value - min) * scaleY;
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            });
+            ctx.stroke();
+
+            // Mark starting and ending points
+            ctx.fillStyle = "red";
+            ctx.fillText("Start", 10, height - (trajectory[0] - min) * scaleY);
+            ctx.fillText("End", width - 50, height - (trajectory[trajectory.length - 1] - min) * scaleY);
+        }
+
+        function drawHistogram(ctx, frequencies, width, height) {
+            const keys = Object.keys(frequencies).map(Number);
+            const maxFreq = Math.max(...Object.values(frequencies));
+            const minKey = Math.min(...keys);
+            const maxKey = Math.max(...keys);
+
+            const barWidth = width / (maxKey - minKey + 1);
+
+            // Title and grid for histogram
+            ctx.fillStyle = "black";
+            ctx.fillText("State / Position", width / 2 - 40, height + 20);
+            ctx.fillText("Frequency", 5, 15);
+
+            keys.forEach((key, i) => {
+                let freq = frequencies[key];
+                let barHeight = (freq / maxFreq) * height;
+                let x = (key - minKey) * barWidth;
+                let y = height - barHeight;
+
+                ctx.fillStyle = "green";
+                ctx.fillRect(x, y, barWidth, barHeight);
+
+                // Label the bar
+                ctx.fillStyle = "black";
+                ctx.fillText(freq, x + barWidth / 2 - 5, y - 5);
+            });
+        }
+
+        function calculateMeanVariance(frequencies) {
+            let total = 0;
+            let sum = 0;
+            let sumSq = 0;
+
+            for (let state in frequencies) {
+                let freq = frequencies[state];
+                let val = parseFloat(state);
+                total += freq;
+                sum += val * freq;
+                sumSq += val * val * freq;
+            }
+
+            let mean = sum / total;
+            let variance = (sumSq / total) - (mean * mean);
+            return { mean, variance };
+        }
+    </script>
+</body>
+</html>
