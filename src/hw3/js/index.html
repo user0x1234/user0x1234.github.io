@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continuous-Time Attack Simulation</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Continuous-Time Attack Simulation (Jumps with Rate &Lambda;)</h1>
+    <label for="lambda">Set &Lambda; (rate of attacks):</label>
+    <input type="number" id="lambda" value="5" step="0.1" min="0.1"><br><br>
+    <button onclick="simulate()">Run Simulation</button>
+
+    <canvas id="attackCanvas" width="800" height="400"></canvas>
+
+    <script>
+        function simulate() {
+            const canvas = document.getElementById("attackCanvas");
+            const ctx = canvas.getContext("2d");
+
+            // Clear the canvas for each new simulation
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Simulation parameters
+            const T = 10; // Total time
+            const n = 10000; // Number of time intervals
+            const dt = T / n; // Small time step size
+            const Lambda = parseFloat(document.getElementById("lambda").value); // Rate of attack
+            const time = Array.from({ length: n + 1 }, (_, i) => i * dt); // Time array
+            let N = new Array(n + 1).fill(0); // Array to track cumulative attacks
+
+            // Perform the simulation
+            for (let i = 1; i <= n; i++) {
+                if (Math.random() < Lambda * dt) {
+                    N[i] = N[i - 1] + 1; // Jump occurs, increment the attack count
+                } else {
+                    N[i] = N[i - 1]; // No jump, same attack count
+                }
+            }
+
+            // Plot the result
+            plotSimulation(ctx, time, N);
+        }
+
+        function plotSimulation(ctx, time, N) {
+            const width = ctx.canvas.width;
+            const height = ctx.canvas.height;
+            const maxAttacks = Math.max(...N);
+
+            // Scaling factors for plotting
+            const xScale = width / (time[time.length - 1]);
+            const yScale = height / (maxAttacks || 1);
+
+            // Draw the step graph for cumulative attacks
+            ctx.beginPath();
+            ctx.moveTo(0, height);
+            for (let i = 0; i < time.length; i++) {
+                const x = time[i] * xScale;
+                const y = height - N[i] * yScale;
+                ctx.lineTo(x, y);
+            }
+            ctx.strokeStyle = "blue";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Label the axes
+            ctx.fillStyle = "black";
+            ctx.font = "12px Arial";
+            ctx.fillText("Time", width - 40, height - 10);
+            ctx.fillText("Attacks", 10, 20);
+        }
+    </script>
+</body>
+</html>
