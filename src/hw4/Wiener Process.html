@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiener Process Approximation</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h2>Wiener Process (Brownian Motion) Approximation</h2>
+    <canvas id="wienerCanvas" width="1000" height="500"></canvas>
+    <script>
+        const canvas = document.getElementById("wienerCanvas");
+        const ctx = canvas.getContext("2d");
+
+        const T = 1;                // Total time
+        const n = 1000;             // Number of intervals
+        const dt = T / n;           // Small time step
+        const sqrtDt = Math.sqrt(dt);  // Square root of dt for jump size
+        const p = 0.5;              // Probability of jump
+
+        let time = [0];             // Array for time steps
+        let position = [0];         // Array for Wiener process positions
+
+        // Generate the Wiener Process
+        function generateWienerProcess() {
+            let x = 0;  // Starting position
+            for (let i = 1; i <= n; i++) {
+                time.push(i * dt);
+                // Make a random step of +/- sqrt(dt) based on p
+                x += (Math.random() < p ? sqrtDt : -sqrtDt);
+                position.push(x);
+            }
+        }
+
+        // Draw the Wiener Process
+        function drawWienerProcess() {
+            const width = canvas.width;
+            const height = canvas.height;
+            const scaleX = width / T;
+            const scaleY = height / (2 * Math.sqrt(T));
+
+            ctx.clearRect(0, 0, width, height);
+            ctx.strokeStyle = "blue";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(0, height / 2);  // Start at the center
+
+            for (let i = 1; i <= n; i++) {
+                const x = time[i] * scaleX;
+                const y = height / 2 - position[i] * scaleY;
+                ctx.lineTo(x, y);
+            }
+
+            ctx.stroke();
+        }
+
+        // Initialize and draw the Wiener Process
+        generateWienerProcess();
+        drawWienerProcess();
+    </script>
+</body>
+</html>
