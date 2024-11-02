@@ -14,85 +14,51 @@ title: Statisticals Blog
 		<br>
 		<br>
 	 <a href="/about">Read more ...</a></p>
-	 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
-    <!-- Container wrapper -->
-    <div class="container-fluid">
-      <!-- Toggle button -->
-      <button
-        data-mdb-collapse-init
-        class="navbar-toggler"
-        type="button"
-        data-mdb-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-bars"></i>
-      </button>
-  
-<!-- Collapsible wrapper -->
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- Navbar brand -->
-        <a class="navbar-brand mt-2 mt-lg-0" href="#">
-          <img
-            src="https://espere.in/static/images/newlogo.png"
-            height="40"
-            alt="MDB Logo"
-            loading="lazy"
-          />
-        </a>
-       <!-- Left links -->
-<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    <li class="nav-item">
-      <a class="nav-link" href="test.html">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link category-link" href="#" data-category="business">Business</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link category-link" href="#" data-category="technology">Technology</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link category-link" href="#" data-category="sports">Sports</a>
-    </li>
-  </ul>
-  <!-- Left links -->
-  
-</div>
-      <!-- Collapsible wrapper -->
-  
-      <!-- Right elements -->
-      <div class="d-flex align-items-center">
-        <form action="#">
-            <div class="input-group">
-                <input id="navbar-form" type="search" class="input form-control" aria-label="Search" placeholder="Search News">
-                <div class="input-group-append">
-                   <button type="submit" aria-label="Search" class="search_btn input-group-text border-0" id="search-addon">
-                      <i class="fas fa-search"></i>
-                   </button>
-                </div>
-             </div>
-        </form>     
-    </div>
-    <!-- Right elements -->
-    <!-- Container wrapper -->
-  </nav>
-  <!-- Navbar -->
-<div class="container">
-    <div class="gallery display_images row row-cols-1 row-cols-md-3 g-4 mb-4">
-    </div>
-    <button class="showmore"></button>
-</div>
-        
-<script src="script.js"></script>
- <!-- MDB -->
- <script
- type="text/javascript"
- src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
- ></script>
-</body>
+	  <nav>
+        <div class="main-nav container flex">
+            <a href="" class="company-logo">
+                <img src="./images/logo.png" alt="logo">
+            </a>
+            <div class="nav-links">
+                <ul class="flex">
+                    <li class="hover-link nav-item" id="cricket" onClick="onNavItemClick('cricket')">Cricket</li>
+                    <li class="hover-link nav-item" id="india" onClick="onNavItemClick('india')">India</li>
+                    <li class="hover-link nav-item" id="technology" onClick="onNavItemClick('technology')">Technology
+                    </li>
+                    <li class="hover-link nav-item" id="politics" onClick="onNavItemClick('politics')">Politics</li>
+
+                </ul>
+            </div>
+            <div class="search-bar flex">
+                <input type="text" class="news-input" id="search-text" placeholder="e.g. Science">
+                <button class="search-button" id="search-button">Search</button>
+            </div>
+        </div>
+    </nav>
+
+
+    <main>
+        <div class="cards-container container flex" id="cardscontainer">
+
+
+
+        </div>
+    </main>
+
+    <template id="template-news-card">
+        <div class="card">
+            <div class="card-header">
+                <img src="https://via.placeholder.com/400x200" alt="" id="news-img">
+            </div>
+            <div class="card-content">
+                <h3 id="news-title">This is the Title</h3>
+                <h6 class="news-source" id="news-source">constGenius 02/02/2024</h6>
+                <p class="news-desc" id="news-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem
+                    incidunt ratione, dolore beatae quaerat voluptatum autem fugit voluptas minima eligendi facere
+                    tenetur cumque. Dolorem porro, fugiat distinctio a accusamus cum!</p>
+            </div>
+        </div>
+    </template>
 	 
 </div><!-- /.blurb -->
 
