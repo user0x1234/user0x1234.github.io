@@ -1,0 +1,9 @@
+Explain the concept of dataset and distribution 
+using a dbms create a sample dataset compute the k univariate distribution k<=3
+
+x chanpions : compute a bivariate (choosing 2 variables)
+
+take a text and compute the distribution of the letters 
+apply a caesar cypher 
+decode the encrypted text (assuming now the you dont nown the shift)
+decode using language distribution 
