@@ -1,56 +1,120 @@
+/* === General Page Style === */
 body {
-    background-color: #263143 ;
+    background-color: #1b2232;        /* Più profondo e contrastato */
     margin: 60px auto;
     width: 70%;
-    color:#a4b1cd;
-}
-nav ul, footer ul { 
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
-    padding: 0px;
-    list-style: none;
-    font-weight: bold;
-}
-nav ul li, footer ul li {
-    display: inline;
-    margin-right: 20px;
-}
-a {
-    text-decoration: none;
-    color: #999;
-}
-a:hover {
-    text-decoration: underline;
-}
-h1 {
-    font-size: 2.5em;
-    font-family:'Helvetica', 'Arial', 'Sans-Serif';
-     color:#a4b1cd;
-}
-p {
-    font-size: 1.5em;
-    line-height: 1.4em;
-    color:#a4b1cd;
-}
-footer {
-    border-top: 1px solid #d5d5d5;
-    font-size: .8em;
+    color: #bfcbea;
+    font-family: 'Inter', 'Helvetica', 'Arial', sans-serif;
+    line-height: 1.6;
 }
 
-ul.posts { 
-    margin: 20px auto 40px; 
-    font-size: 1.5em;
+/* === Navigation & Footer === */
+nav ul, footer ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    font-weight: 600;
+    font-size: 1.1em;
+    letter-spacing: 0.5px;
+}
+
+nav ul li, footer ul li {
+    display: inline-block;
+}
+
+a {
+    text-decoration: none;
+    color: #7ea9ff;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+    color: #b1d1ff;
+    text-shadow: 0 0 8px #7ea9ff;
+}
+
+/* === Typography === */
+h1, h2, h3 {
+    font-family: 'Poppins', 'Helvetica', sans-serif;
+    color: #a6baff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 0 0 12px rgba(124, 180, 255, 0.25);
+}
+
+h1 {
+    font-size: 2.8em;
+    margin-bottom: 0.3em;
+}
+
+h2 {
+    font-size: 2em;
+    margin-top: 1em;
+}
+
+p {
+    font-size: 1.2em;
+    color: #c9d5f2;
+    margin: 0.8em 0;
+}
+
+/* === Lists === */
+ul.posts {
+    margin: 20px auto 40px;
+    font-size: 1.2em;
+    padding-left: 0;
 }
 
 ul.posts li {
     list-style: none;
+    background: #24304b;
+    margin: 10px 0;
+    padding: 12px 20px;
+    border-radius: 12px;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
+ul.posts li:hover {
+    background: #2e3e61;
+    transform: translateX(5px);
+}
+
+/* === Images === */
 img {
     width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(90, 130, 255, 0.25);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 35px rgba(100, 150, 255, 0.45);
+}
+
+/* === Footer === */
+footer {
+    border-top: 1px solid rgba(180, 180, 255, 0.2);
+    margin-top: 60px;
+    padding-top: 10px;
+    font-size: 0.9em;
+    color: #8897c2;
+    text-align: center;
+}
+
+/* === Custom Section === */
 .hw1 {
-    width: 60%;
-    padding-left: 8em;
-		
-} 
+    width: 70%;
+    margin: 0 auto;
+    padding: 3em;
+    background: linear-gradient(145deg, #212b3d, #1a2230);
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(50, 80, 150, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.hw1:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 40px rgba(100, 150, 255, 0.4);
+}
