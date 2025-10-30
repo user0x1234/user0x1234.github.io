@@ -118,3 +118,36 @@ footer {
     transform: translateY(-3px);
     box-shadow: 0 0 40px rgba(100, 150, 255, 0.4);
 }
+
+
+article.markdown-body {
+    background: linear-gradient(145deg, #202b3f, #1b2435);
+    padding: 2.5em;
+    border-radius: 18px;
+    box-shadow: 0 0 25px rgba(100, 140, 255, 0.25);
+    margin-bottom: 2.5em;
+}
+
+article.markdown-body h1,
+article.markdown-body h2,
+article.markdown-body h3 {
+    color: #a6baff;
+    border-left: 4px solid #6f9cff;
+    padding-left: 0.4em;
+}
+
+article.markdown-body pre {
+    background: #111827;
+    padding: 1em;
+    border-radius: 10px;
+    overflow-x: auto;
+    color: #c9d5f2;
+    font-size: 0.95em;
+}
+
+article.markdown-body code {
+    background: rgba(130, 150, 255, 0.15);
+    padding: 0.2em 0.4em;
+    border-radius: 6px;
+    font-family: 'Fira Code', monospace;
+}
