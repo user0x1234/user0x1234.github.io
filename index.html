@@ -2,49 +2,125 @@
 layout: default
 title: Statisticals Blog
 ---
-<div class="blurb">
-	<h1>Hi there, I'm User0x1234!</h1>
-	<p>"Statistics is the grammar of science" <em>Karl Pearson</em> 
-		<br>
-		<br>
-		"Statistics is, or should be, about scientific investigation and how to do it better, but many statisticians believe it is a branch of mathematics. Now I agree that the physicist, the chemist, the engineer, and the statistician can never know too much mathematics, but their objectives should be better physics, better chemistry, better engineering, and in the case of statistics, better scientific investigation. Whether in any given study this implies more or less mathematics is incidental." <em>George E. P. Box <em>
-		<br>
-		<br>
-		"Facts speak louder than statistics" <em>Mr. Justice Streatfield </em>
-		<br>
-		<br>
-	 <a href="/about">Read more ...</a></p>
-	  <nav>
-        <div class="main-nav container flex">
-            <a href="" class="company-logo">
-                <img src="./images/logo.png" alt="logo">
-            </a>
-            <div class="nav-links">
-                <ul class="flex">
-                    <li class="hover-link nav-item" id="cricket" onClick="onNavItemClick('cricket')">Cricket</li>
-                    <li class="hover-link nav-item" id="india" onClick="onNavItemClick('india')">India</li>
-                    <li class="hover-link nav-item" id="technology" onClick="onNavItemClick('technology')">Technology
-                    </li>
-                    <li class="hover-link nav-item" id="politics" onClick="onNavItemClick('politics')">Politics</li>
 
-                </ul>
-            </div>
-            <div class="search-bar flex">
-                <input type="text" class="news-input" id="search-text" placeholder="e.g. Science">
-                <button class="search-button" id="search-button">Search</button>
-            </div>
-        </div>
-    </nav>
+<!-- ======================= HERO SECTION ======================= -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>📊 Welcome to <span class="accent">Statisticals Blog</span></h1>
+    <p class="tagline">
+      Exploring the world through <strong>data, probability</strong>, and the <strong>science of uncertainty</strong>.
+    </p>
+    <a href="/about" class="cta-button">Learn More</a>
+  </div>
+</div>
 
+<!-- ======================= INTRODUCTION ======================= -->
+<section class="intro-section">
+  <h2>“Statistics is the grammar of science”</h2>
+  <p class="quote-author">— Karl Pearson</p>
 
-    <main>
-        <div class="cards-container container flex" id="cardscontainer">
+  <blockquote>
+    “Statistics is, or should be, about scientific investigation and how to do it better, 
+    but many statisticians believe it is a branch of mathematics. Now I agree that the physicist, 
+    the chemist, the engineer, and the statistician can never know too much mathematics, but their 
+    objectives should be better physics, better chemistry, better engineering, and in the case of 
+    statistics, better scientific investigation.”  
+    <br><em>— George E. P. Box</em>
+  </blockquote>
 
+  <p class="quote-small">
+    “Facts speak louder than statistics.” <br>
+    <em>— Mr. Justice Streatfield</em>
+  </p>
+</section>
 
+<!-- ======================= NAVIGATION ======================= -->
+<nav class="main-nav container flex">
+  <a href="/" class="company-logo">
+    <img src="./images/logo.png" alt="logo">
+  </a>
 
-        </div>
-    </main>
+  <div class="nav-links">
+    <ul class="flex">
+      <li><a href="/about" class="hover-link nav-item">About</a></li>
+      <li><a href="/posts" class="hover-link nav-item">Posts</a></li>
+      <li><a href="/projects" class="hover-link nav-item">Projects</a></li>
+      <li><a href="/contact" class="hover-link nav-item">Contact</a></li>
+    </ul>
+  </div>
 
-	 
-</div><!-- /.blurb -->
+  <div class="search-bar flex">
+    <input type="text" class="news-input" id="search-text" placeholder="Search topics...">
+    <button class="search-button" id="search-button">Search</button>
+  </div>
+</nav>
 
+<!-- ======================= FEATURED TOPICS ======================= -->
+<main>
+  <section class="topics-section">
+    <h2>Featured Topics</h2>
+    <div class="cards-container container flex" id="cardscontainer">
+      <div class="topic-card">
+        <h3>📈 Data Science</h3>
+        <p>From regression to deep learning, explore the mathematical foundations of modern analytics and AI.</p>
+      </div>
+      <div class="topic-card">
+        <h3>🧮 Probability</h3>
+        <p>Dive into randomness, distributions, and statistical inference — the pillars of scientific prediction.</p>
+      </div>
+      <div class="topic-card">
+        <h3>🧠 Machine Learning</h3>
+        <p>Learn how algorithms can learn patterns, make predictions, and even understand language and vision.</p>
+      </div>
+      <div class="topic-card">
+        <h3>🌍 Society & Research</h3>
+        <p>From surveys to public policy, discover how data drives decisions and social change.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= LATEST POSTS ======================= -->
+  <section class="latest-posts">
+    <h2>📰 Latest Posts</h2>
+
+    <article class="post-preview">
+      <h3><a href="/posts/law-of-large-numbers">The Law of Large Numbers in Action</a></h3>
+      <p>
+        A visual and mathematical journey into one of the most important theorems in probability.  
+        Includes simulations and insights into how empirical frequencies stabilize around theoretical expectations.
+      </p>
+      <p class="meta">Posted on October 15, 2025 • 6 min read</p>
+    </article>
+
+    <article class="post-preview">
+      <h3><a href="/posts/understanding-rsa">RSA Encryption and Frequency Analysis</a></h3>
+      <p>
+        Discover how RSA secures information — and how simple frequency analysis can be used to 
+        explore (and sometimes break) cryptographic systems.
+      </p>
+      <p class="meta">Posted on October 10, 2025 • 7 min read</p>
+    </article>
+
+    <article class="post-preview">
+      <h3><a href="/posts/bayesian-thinking">Bayesian Thinking: Updating Beliefs with Data</a></h3>
+      <p>
+        An intuitive guide to Bayes’ theorem and how it helps us reason under uncertainty — from weather forecasts to medical testing.
+      </p>
+      <p class="meta">Posted on September 28, 2025 • 5 min read</p>
+    </article>
+  </section>
+
+  <!-- ======================= STATISTICS CORNER ======================= -->
+  <section class="stats-corner">
+    <h2>📊 Statistics Corner</h2>
+    <p>
+      Curious about how statistical laws behave in real life?  
+      Try our interactive visualizations — experiment with sampling, probability distributions, and random processes!
+    </p>
+    <a href="/projects/lln-simulation" class="cta-button">Run Simulation</a>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Statisticals Blog — Powered by Jekyll & Data • Designed by User0x1234</p>
+</footer>
