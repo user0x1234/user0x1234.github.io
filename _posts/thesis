@@ -1,0 +1,931 @@
+“Lebesgue–Stieltjes Integration as a Mathematical Framework for Cybersecurity Event Modeling”
+
+or
+
+“Stochastic Modeling of Cybersecurity Risk Using Lebesgue–Stieltjes Integrals”
+
+
+1. Introduction
+
+Motivation: cybersecurity as a stochastic system
+
+Limits of classical statistical models
+
+Why measure-theoretic probability is needed
+
+Objectives and contributions of the thesis
+
+📄 ~1–2 pages
+
+2. Probability Theory and Cybersecurity
+2.1 Random Experiments in Cybersecurity
+
+Attacks, intrusions, failures as random events
+
+Event logs and uncertainty
+
+2.2 Interpretations of Probability
+
+Classical
+
+Frequentist
+
+Bayesian
+
+Geometric
+
+Practical implications for cybersecurity
+
+2.3 Axiomatic Probability (Kolmogorov)
+
+Sample space
+
+σ-algebras
+
+Probability measures
+
+Why axioms unify interpretations
+
+📄 ~1.5–2 pages
+
+3. Measure Theory Foundations
+3.1 Measures and σ-Algebras
+
+Definition and examples
+
+Counting measure
+
+Probability measures
+
+3.2 Measurable Functions and Random Variables
+
+Formal definition
+
+Interpretation in security data
+
+3.3 Distribution Functions
+
+Cumulative distribution functions (CDFs)
+
+Discrete vs continuous cases
+
+📄 ~1.5–2 pages
+
+4. The Lebesgue–Stieltjes Integral
+4.1 Motivation and Definition
+
+From Riemann to Lebesgue
+
+Why Stieltjes generalization is needed
+
+4.2 Properties of the Lebesgue–Stieltjes Integral
+
+Linearity
+
+Monotone convergence
+
+Integration with respect to jump functions
+
+4.3 Interpretation in Stochastic Processes
+
+Integrating with respect to cumulative events
+
+Discrete, continuous, and mixed processes
+
+📄 ~2–3 pages
+
+5. Stochastic Processes in Cybersecurity
+5.1 Bernoulli and Counting Processes
+
+Bernoulli trials
+
+Law of Large Numbers
+
+Relation to intrusion attempts
+
+5.2 Poisson Process
+
+Definition and properties
+
+Independent and stationary increments
+
+Interarrival times
+
+5.3 Wiener Process (Brownian Motion)
+
+Definition
+
+Interpretation as background noise
+
+Differences from jump processes
+
+📄 ~2–3 pages
+
+6. Cybersecurity Risk Modeling via Lebesgue–Stieltjes Integration
+6.1 Attack Events as Counting Measures
+
+Modeling attacks as jump processes
+
+6.2 Risk Accumulation Models
+𝑅
+(
+𝑇
+)
+=
+∫
+0
+𝑇
+𝑤
+(
+𝑡
+)
+ 
+𝑑
+𝑁
+(
+𝑡
+)
+R(T)=∫
+0
+T
+	​
+
+w(t)dN(t)
+
+Severity-weighted events
+
+Interpretation in IDS/SIEM systems
+
+6.3 Hybrid Continuous–Discrete Models
+
+Background traffic + attacks
+
+Brownian motion + Poisson jumps
+
+📄 ~2–3 pages
+
+7. Simulation and Experimental Results
+7.1 Bernoulli Approximation of Poisson Processes
+
+Discretization of time
+
+Convergence as 
+𝑛
+→
+∞
+n→∞
+
+7.2 Numerical Simulation Methods
+
+Euler–Maruyama method
+
+Online algorithms
+
+7.3 Visualization and Interpretation
+
+Random trajectories
+
+Distribution convergence
+
+Parameter analysis (
+𝜆
+λ)
+
+📄 ~2–4 pages
+
+8. Computational and Numerical Considerations
+
+Online vs batch algorithms
+
+Numerical stability
+
+Error propagation
+
+Overflow and cancellation
+
+📄 ~1–2 pages
+
+9. Applications and Case Studies
+
+Intrusion Detection Systems (IDS)
+
+Security Information and Event Management (SIEM)
+
+Risk scoring and alert aggregation
+
+📄 ~1–2 pages
+
+10. Conclusions and Future Work
+
+Summary of results
+
+Theoretical and practical implications
+
+Extensions: anomaly detection, ML integration, real data
+
+📄 ~1 page
+
+
+CHAPTER 1 
+
+Write Chapter 1 (Introduction)
+
+\chapter{Introduction}
+
+Cybersecurity systems operate in environments characterized by uncertainty, incomplete information, and continuously evolving threats. 
+Events such as intrusion attempts, malware infections, denial-of-service attacks, and system failures occur in an irregular and often unpredictable manner.
+As a consequence, cybersecurity naturally lends itself to probabilistic and stochastic modeling.
+
+Traditional approaches to cybersecurity analysis often rely on deterministic rules, threshold-based alarms, or classical statistical summaries.
+While these methods are effective in specific contexts, they struggle to capture the intrinsic randomness of cyber events, the temporal structure of attacks, and the coexistence of discrete and continuous phenomena.
+For example, security breaches occur as discrete events, while background network traffic, system load, or noise-like fluctuations evolve continuously over time.
+
+Probability theory provides a natural framework to model uncertainty, but its application to cybersecurity requires a mathematically rigorous foundation.
+In particular, modern probability theory is built upon measure theory, which allows random phenomena to be described in a unified and consistent way.
+Within this framework, random variables are defined as measurable functions, distributions are probability measures, and expectations are integrals with respect to these measures.
+
+The Lebesgue--Stieltjes integral plays a central role in this setting.
+It generalizes both Riemann integration and discrete summation by allowing integration with respect to an arbitrary non-decreasing function.
+As a result, it provides a powerful mathematical tool to model processes that exhibit both continuous evolution and discrete jumps.
+This feature makes the Lebesgue--Stieltjes integral particularly well suited for cybersecurity applications, where cumulative risk, attack intensity, and event aggregation naturally arise.
+
+In this thesis, cybersecurity events are modeled as stochastic processes, with particular emphasis on counting processes such as Bernoulli and Poisson processes.
+These models allow intrusion attempts and security incidents to be interpreted as random jumps occurring in time, while background fluctuations can be represented by continuous processes such as the Wiener process (Brownian motion).
+By combining these elements, hybrid models are obtained that more accurately reflect real-world security dynamics.
+
+A key objective of this work is to demonstrate how the Lebesgue--Stieltjes integral provides a unifying mathematical framework for these models.
+In particular, it enables the definition of cumulative risk measures as integrals with respect to counting processes, thereby formalizing the aggregation of security events over time.
+This approach also clarifies the relationship between classical statistical models, stochastic processes, and their numerical simulation.
+
+In addition to the theoretical development, this thesis places strong emphasis on simulation and computational aspects.
+Discrete-time approximations of continuous-time processes are implemented, illustrating the convergence of Bernoulli processes to Poisson processes and the numerical simulation of stochastic differential equations using the Euler--Maruyama method.
+These simulations highlight both the practical applicability of the models and the importance of numerical stability, online algorithms, and computational efficiency in cybersecurity contexts.
+
+\chapter{Probability Theory and Cybersecurity}
+
+Cybersecurity systems are inherently stochastic.
+Intrusions, attacks, failures, and anomalies do not occur in a deterministic manner but are influenced by human behavior, system complexity, and external environmental factors.
+As a result, probability theory provides the natural mathematical framework for modeling and analyzing cybersecurity phenomena.
+
+This chapter introduces probabilistic concepts from a cybersecurity perspective.
+First, cybersecurity events are formalized as random experiments.
+Then, the main interpretations of probability are reviewed and compared.
+Finally, Kolmogorov’s axiomatic framework is introduced, showing how it unifies these interpretations and enables rigorous modeling.
+
+\section{Random Experiments in Cybersecurity}
+
+A \emph{random experiment} is a procedure whose outcome cannot be predicted with certainty, even if the experiment is repeated under identical conditions.
+Many cybersecurity processes naturally fit this definition.
+
+\subsection{Attacks, Intrusions, and Failures as Random Events}
+
+Examples of random experiments in cybersecurity include:
+\begin{itemize}
+    \item Whether a server is breached during a given time interval,
+    \item The arrival time of a phishing email,
+    \item The success or failure of an authentication attempt,
+    \item The occurrence of a system failure or vulnerability exploitation.
+\end{itemize}
+
+Each experiment produces an outcome belonging to a \emph{sample space} $\Omega$.
+For example, for a weekly security check,
+\[
+\Omega = \{\text{secure}, \text{breached}\}.
+\]
+
+These events can be modeled as Bernoulli trials, counting processes, or more complex stochastic processes depending on the level of detail required.
+
+\subsection{Event Logs and Uncertainty}
+
+Modern cybersecurity relies heavily on event logs generated by firewalls, intrusion detection systems (IDS), and security information and event management (SIEM) platforms.
+These logs represent discrete observations of an underlying random process.
+
+However, logs are often:
+\begin{itemize}
+    \item Incomplete,
+    \item Noisy,
+    \item Delayed,
+    \item Subject to false positives and false negatives.
+\end{itemize}
+
+Probability theory allows uncertainty in these observations to be quantified and systematically incorporated into analysis and decision-making.
+
+\section{Interpretations of Probability}
+
+Different interpretations of probability provide different conceptual meanings to the same numerical value.
+In cybersecurity, these interpretations coexist and are often implicitly mixed.
+
+\subsection{Classical Interpretation}
+
+The classical interpretation defines probability as the ratio of favorable outcomes to total equally likely outcomes:
+\[
+P(A) = \frac{N_A}{N}.
+\]
+
+\textbf{Cybersecurity example.}  
+If an attacker randomly guesses one password among $N$ equally likely passwords, the probability of success in one attempt is $1/N$.
+
+\textbf{Limitation.}  
+This approach assumes symmetry and finiteness, which rarely hold in real cybersecurity scenarios.
+
+\subsection{Frequentist Interpretation}
+
+The frequentist interpretation defines probability as the long-run relative frequency of an event:
+\[
+P(A) = \lim_{n \to \infty} \frac{N_A(n)}{n}.
+\]
+
+\textbf{Cybersecurity example.}  
+If 2\% of observed network connections over a long period are malicious, the probability of an attack is estimated as $0.02$.
+
+This interpretation underlies statistical intrusion detection and anomaly detection systems.
+
+\subsection{Bayesian Interpretation}
+
+In the Bayesian framework, probability represents a degree of belief that is updated as new information becomes available.
+Bayes’ theorem states:
+\[
+P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}.
+\]
+
+\textbf{Cybersecurity example.}  
+The probability that a file is malicious can be updated after observing behavioral indicators or antivirus alerts.
+
+Bayesian methods are particularly useful in adaptive security systems and threat intelligence.
+
+\subsection{Geometric Interpretation}
+
+The geometric interpretation applies to continuous spaces and defines probability as a ratio of measures:
+\[
+P(A) = \frac{\mu(A)}{\mu(\Omega)}.
+\]
+
+\textbf{Cybersecurity example.}  
+If attack times are uniformly distributed over a time interval $[0,T]$, the probability that an attack occurs within a subinterval $[a,b]$ is $(b-a)/T$.
+
+\subsection{Practical Implications for Cybersecurity}
+
+Each interpretation has strengths and weaknesses:
+\begin{itemize}
+    \item Classical probability is simple but restrictive,
+    \item Frequentist probability is data-driven but retrospective,
+    \item Bayesian probability is flexible but requires priors,
+    \item Geometric probability applies naturally to continuous-time models.
+\end{itemize}
+
+A unified framework is therefore necessary.
+
+\section{Axiomatic Probability (Kolmogorov)}
+
+Modern probability theory is built on Kolmogorov’s axioms, which provide a rigorous and interpretation-independent foundation.
+
+A probability space is defined as:
+\[
+(\Omega, \mathcal{F}, P),
+\]
+where:
+\begin{itemize}
+    \item $\Omega$ is the sample space,
+    \item $\mathcal{F}$ is a $\sigma$-algebra of events,
+    \item $P$ is a probability measure.
+\end{itemize}
+
+\subsection{Sample Space}
+
+The sample space contains all possible outcomes of a cybersecurity experiment.
+For example, for weekly security monitoring,
+\[
+\Omega = \{-1, +1\},
+\]
+where $+1$ denotes a secure week and $-1$ a breach.
+
+\subsection{$\sigma$-Algebras}
+
+A $\sigma$-algebra $\mathcal{F}$ is a collection of events that is closed under complements and countable unions.
+It represents the set of events that can be meaningfully assigned probabilities.
+
+\subsection{Probability Measures}
+
+A probability measure $P$ assigns probabilities to events in $\mathcal{F}$ and satisfies:
+\begin{enumerate}
+    \item $P(A) \ge 0$,
+    \item $P(\Omega) = 1$,
+    \item Countable additivity.
+\end{enumerate}
+
+\subsection{Why the Axioms Unify Interpretations}
+
+The axiomatic framework:
+\begin{itemize}
+    \item Generalizes classical probability,
+    \item Justifies frequentist limits via laws of large numbers,
+    \item Supports Bayesian updating,
+    \item Extends naturally to continuous and mixed models.
+\end{itemize}
+
+This formalism enables the use of measure theory and integration with respect to probability measures, which is essential for modeling cybersecurity risk accumulation using the Lebesgue--Stieltjes integral.
+
+\chapter{Measure-Theoretic Foundations}
+
+Modern probability theory is fundamentally rooted in measure theory.
+This mathematical framework allows random phenomena to be modeled in a rigorous and unified manner, accommodating discrete, continuous, and hybrid systems.
+In cybersecurity, where discrete events such as attacks coexist with continuous-time processes such as network traffic, measure theory provides the necessary formalism.
+
+This chapter introduces the core concepts of measure theory required for probabilistic modeling, with particular emphasis on their interpretation in cybersecurity contexts.
+
+\section{Measures and $\sigma$-Algebras}
+
+\subsection{Definition of a Measure}
+
+Let $\Omega$ be a non-empty set and let $\mathcal{F}$ be a $\sigma$-algebra on $\Omega$.
+A \emph{measure} is a function
+\[
+\mu : \mathcal{F} \to [0, +\infty]
+\]
+satisfying:
+\begin{enumerate}
+    \item $\mu(\emptyset) = 0$,
+    \item $\mu(A) \ge 0$ for all $A \in \mathcal{F}$,
+    \item (Countable additivity) For any countable collection of pairwise disjoint sets $\{A_i\}$,
+    \[
+    \mu\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} \mu(A_i).
+    \]
+\end{enumerate}
+
+\subsection{$\sigma$-Algebras}
+
+A \emph{$\sigma$-algebra} $\mathcal{F}$ is a collection of subsets of $\Omega$ such that:
+\begin{itemize}
+    \item $\Omega \in \mathcal{F}$,
+    \item If $A \in \mathcal{F}$, then $A^c \in \mathcal{F}$,
+    \item If $\{A_i\} \subset \mathcal{F}$, then $\bigcup_i A_i \in \mathcal{F}$.
+\end{itemize}
+
+In cybersecurity, $\mathcal{F}$ represents the collection of events that can be observed, logged, or detected by a monitoring system.
+
+\subsection{Counting Measure}
+
+The \emph{counting measure} $\mu_c$ is defined on a set $\Omega$ as:
+\[
+\mu_c(A) = \text{number of elements in } A.
+\]
+
+\textbf{Cybersecurity interpretation.}  
+Counting measures naturally model the number of security events, such as login attempts, detected intrusions, or malware alerts within a given time interval.
+
+\subsection{Probability Measures}
+
+A \emph{probability measure} $P$ is a measure satisfying:
+\[
+P(\Omega) = 1.
+\]
+
+Probability measures assign normalized weights to events and are used to quantify uncertainty.
+In cybersecurity, probability measures describe the likelihood of attacks, failures, or anomalies.
+
+\section{Measurable Functions and Random Variables}
+
+\subsection{Formal Definition}
+
+Let $(\Omega, \mathcal{F})$ be a measurable space and $(\mathbb{R}, \mathcal{B}(\mathbb{R}))$ the real line with its Borel $\sigma$-algebra.
+A function
+\[
+X : \Omega \to \mathbb{R}
+\]
+is called \emph{measurable} if
+\[
+X^{-1}(B) \in \mathcal{F} \quad \text{for all } B \in \mathcal{B}(\mathbb{R}).
+\]
+
+In probability theory, measurable functions are called \emph{random variables}.
+
+\subsection{Interpretation in Security Data}
+
+Random variables model numerical quantities derived from cybersecurity experiments, such as:
+\begin{itemize}
+    \item Number of attacks in a given time window,
+    \item Time between consecutive intrusions,
+    \item Severity score of a detected incident,
+    \item Network traffic volume.
+\end{itemize}
+
+The measurability condition ensures that statements about these quantities can be assigned probabilities.
+
+\section{Distribution Functions}
+
+\subsection{Cumulative Distribution Functions}
+
+The \emph{distribution function} (CDF) of a random variable $X$ is defined as:
+\[
+F_X(x) = P(X \le x).
+\]
+
+The CDF fully characterizes the probability distribution of $X$ and is non-decreasing, right-continuous, and satisfies:
+\[
+\lim_{x \to -\infty} F_X(x) = 0, \quad \lim_{x \to +\infty} F_X(x) = 1.
+\]
+
+\subsection{Discrete Distributions}
+
+If $X$ is discrete, its distribution is characterized by a probability mass function:
+\[
+P(X = x_i) = p_i,
+\]
+and the CDF is a step function.
+
+\textbf{Cybersecurity example.}  
+The number of weekly intrusion attempts can be modeled as a discrete random variable.
+
+\subsection{Continuous Distributions}
+
+If $X$ is continuous, the CDF can be expressed as:
+\[
+F_X(x) = \int_{-\infty}^{x} f_X(t)\, dt,
+\]
+where $f_X$ is the probability density function.
+
+\textbf{Cybersecurity example.}  
+Interarrival times between attacks are often modeled using exponential distributions.
+
+\section{Discussion}
+
+Measure theory provides the mathematical structure necessary to treat discrete and continuous cybersecurity data within a single framework.
+Distribution functions act as the bridge between probability measures and integration.
+
+In the next chapter, the Lebesgue--Stieltjes integral is introduced as a generalization that allows integration with respect to distribution functions, enabling the modeling of cumulative cybersecurity risk and event-driven processes.
+
+
+
+\chapter{The Lebesgue--Stieltjes Integral}
+
+The Lebesgue--Stieltjes integral is a powerful generalization of classical integration, unifying discrete summation and continuous integration within a single mathematical framework.
+Its importance in probability theory lies in its ability to integrate functions with respect to arbitrary distribution functions.
+This feature makes it particularly suitable for modeling stochastic processes that exhibit both continuous evolution and discrete jumps, as commonly encountered in cybersecurity systems.
+
+\section{Motivation and Definition}
+
+\subsection{From Riemann to Lebesgue}
+
+The Riemann integral is based on partitioning the domain of a function and summing the areas of rectangles.
+While sufficient for many applications, it encounters limitations when dealing with highly irregular functions or when the underlying measure is not uniform.
+
+Lebesgue integration reverses this perspective by partitioning the range of the function and integrating with respect to a measure.
+Given a measurable function $f$ and a measure $\mu$, the Lebesgue integral is defined as:
+\[
+\int f \, d\mu.
+\]
+
+This formulation is more flexible and allows integration with respect to probability measures, making it central to modern probability theory.
+
+\subsection{Why the Stieltjes Generalization Is Needed}
+
+In many applications, especially in probability and cybersecurity, integration is required with respect to cumulative quantities rather than standard measures.
+For example, cumulative counts of attacks or aggregated risk scores evolve as step functions with jumps.
+
+Let $G$ be a non-decreasing, right-continuous function.
+The Lebesgue--Stieltjes integral of $f$ with respect to $G$ is defined as:
+\[
+\int f \, dG.
+\]
+
+When $G(x) = x$, the Lebesgue--Stieltjes integral reduces to the Lebesgue integral.
+When $G$ is a step function, the integral reduces to a weighted sum.
+Thus, the Stieltjes formulation naturally unifies discrete and continuous cases.
+
+\section{Properties of the Lebesgue--Stieltjes Integral}
+
+\subsection{Linearity}
+
+For measurable functions $f$ and $g$ and scalars $\alpha, \beta \in \mathbb{R}$,
+\[
+\int (\alpha f + \beta g)\, dG = \alpha \int f\, dG + \beta \int g\, dG.
+\]
+
+Linearity ensures that cumulative risk contributions from multiple sources can be aggregated consistently.
+
+\subsection{Monotone Convergence}
+
+If $\{f_n\}$ is a sequence of non-negative measurable functions such that
+\[
+f_n \uparrow f,
+\]
+then
+\[
+\lim_{n \to \infty} \int f_n \, dG = \int f \, dG.
+\]
+
+This property is fundamental when approximating continuous-time processes using discrete simulations, as done in numerical cybersecurity models.
+
+\subsection{Integration with Respect to Jump Functions}
+
+If $G$ is a step function with jumps at points $\{x_i\}$ of size $\Delta G(x_i)$, then:
+\[
+\int f \, dG = \sum_i f(x_i)\Delta G(x_i).
+\]
+
+\textbf{Cybersecurity interpretation.}  
+Each jump may represent a detected intrusion or alert, and the integral accumulates weighted contributions of these events.
+
+\section{Interpretation in Stochastic Processes}
+
+\subsection{Integrating with Respect to Cumulative Events}
+
+Let $N(t)$ be a counting process representing the number of attacks up to time $t$.
+The integral
+\[
+\int_0^T w(t)\, dN(t)
+\]
+represents the cumulative risk, where $w(t)$ weights the severity or impact of each event.
+
+This formulation naturally arises in intrusion detection systems and risk scoring mechanisms.
+
+\subsection{Discrete, Continuous, and Mixed Processes}
+
+The Lebesgue--Stieltjes integral accommodates:
+\begin{itemize}
+    \item \textbf{Discrete processes}, such as Bernoulli trials and counting processes,
+    \item \textbf{Continuous processes}, such as Brownian motion,
+    \item \textbf{Mixed processes}, combining continuous noise with discrete jumps.
+\end{itemize}
+
+\textbf{Example.}  
+A hybrid cybersecurity model may represent background network fluctuations by a Wiener process and intrusion events by a Poisson process.
+The total system risk can then be expressed using a combination of Lebesgue and Lebesgue--Stieltjes integrals.
+
+\section{Discussion}
+
+The Lebesgue--Stieltjes integral provides a unified framework for integrating over arbitrary cumulative functions.
+Its ability to naturally handle jump processes makes it particularly suitable for cybersecurity modeling, where events occur irregularly and impact accumulates over time.
+
+In the next chapter, stochastic processes commonly used in cybersecurity are introduced, and their properties are analyzed within this measure-theoretic framework.
+
+
+
+\chapter{Stochastic Processes in Cybersecurity}
+
+Cybersecurity systems evolve over time under the influence of both predictable mechanisms and random phenomena.
+Stochastic processes provide the mathematical framework to model the temporal evolution of such systems.
+This chapter introduces the stochastic processes most relevant to cybersecurity modeling, focusing on Bernoulli and counting processes, the Poisson process, and the Wiener process.
+
+\section{Bernoulli and Counting Processes}
+
+\subsection{Bernoulli Trials}
+
+A \emph{Bernoulli trial} is a random experiment with two possible outcomes, typically labeled as success and failure.
+Let $X_i$ be a sequence of independent Bernoulli random variables such that:
+\[
+P(X_i = 1) = p, \quad P(X_i = 0) = 1 - p.
+\]
+
+\textbf{Cybersecurity interpretation.}  
+Each trial may represent a security check within a fixed time interval, where success corresponds to an intrusion attempt or a breach.
+
+\subsection{Counting Processes}
+
+The associated counting process is defined as:
+\[
+N_n = \sum_{i=1}^{n} X_i,
+\]
+representing the total number of successes up to trial $n$.
+
+Counting processes are fundamental for modeling the cumulative number of intrusion attempts, alerts, or detected anomalies.
+
+\subsection{Law of Large Numbers}
+
+The \emph{Law of Large Numbers} states that:
+\[
+\frac{N_n}{n} \xrightarrow[]{\text{a.s.}} p \quad \text{as } n \to \infty.
+\]
+
+\textbf{Cybersecurity interpretation.}  
+Over long observation periods, the empirical frequency of attacks converges to their true underlying probability.
+This principle underlies statistical intrusion detection and anomaly detection techniques.
+
+\subsection{Relation to Intrusion Attempts}
+
+Bernoulli processes provide a simple yet effective model for intrusion attempts occurring at discrete times.
+They serve as building blocks for more refined models such as Poisson processes.
+
+\section{Poisson Process}
+
+\subsection{Definition}
+
+A \emph{Poisson process} $\{N(t), t \ge 0\}$ with rate $\lambda > 0$ satisfies:
+\begin{itemize}
+    \item $N(0) = 0$,
+    \item Independent increments,
+    \item Stationary increments,
+    \item For small $\Delta t$,
+    \[
+    P(N(t+\Delta t) - N(t) = 1) \approx \lambda \Delta t.
+    \]
+\end{itemize}
+
+\subsection{Distributional Properties}
+
+For any $t \ge 0$,
+\[
+N(t) \sim \text{Poisson}(\lambda t).
+\]
+
+\textbf{Cybersecurity interpretation.}  
+The Poisson process models the number of attacks or alerts occurring within a time window.
+
+\subsection{Interarrival Times}
+
+The waiting times between consecutive events are independent and exponentially distributed:
+\[
+T_i \sim \text{Exponential}(\lambda).
+\]
+
+This \emph{memoryless property} reflects the unpredictability of attack timing.
+
+\subsection{Independent and Stationary Increments}
+
+Independent increments imply that events in disjoint time intervals are unrelated.
+Stationary increments ensure that attack intensity depends only on interval length, not its position in time.
+
+\section{Wiener Process (Brownian Motion)}
+
+\subsection{Definition}
+
+A \emph{Wiener process} $\{W(t), t \ge 0\}$ is a continuous-time stochastic process satisfying:
+\begin{itemize}
+    \item $W(0) = 0$,
+    \item Independent increments,
+    \item Stationary increments,
+    \item $W(t) - W(s) \sim \mathcal{N}(0, t-s)$,
+    \item Continuous sample paths.
+\end{itemize}
+
+\subsection{Interpretation as Background Noise}
+
+In cybersecurity, Wiener processes model continuous background fluctuations such as:
+\begin{itemize}
+    \item Network traffic variability,
+    \item System load fluctuations,
+    \item Measurement noise in monitoring tools.
+\end{itemize}
+
+\subsection{Differences from Jump Processes}
+
+Unlike Poisson processes, Wiener processes:
+\begin{itemize}
+    \item Have continuous paths,
+    \item Exhibit Gaussian increments,
+    \item Do not model discrete event arrivals.
+\end{itemize}
+
+\textbf{Cybersecurity implication.}  
+While Poisson processes capture discrete attack events, Wiener processes represent continuous uncertainty.
+Realistic cybersecurity models often combine both.
+
+\section{Discussion}
+
+Bernoulli, Poisson, and Wiener processes provide complementary tools for modeling cybersecurity systems.
+Bernoulli processes capture discrete trials, Poisson processes describe random event arrivals, and Wiener processes represent continuous fluctuations.
+
+In the next chapter, these stochastic models are integrated using the Lebesgue--Stieltjes framework to construct cumulative risk and hybrid cybersecurity models.
+
+
+\chapter{Stochastic Processes in Cybersecurity}
+
+Cybersecurity systems evolve over time under the influence of both predictable mechanisms and random phenomena.
+Stochastic processes provide the mathematical framework to model the temporal evolution of such systems.
+This chapter introduces the stochastic processes most relevant to cybersecurity modeling, focusing on Bernoulli and counting processes, the Poisson process, and the Wiener process.
+
+\section{Bernoulli and Counting Processes}
+
+\subsection{Bernoulli Trials}
+
+A \emph{Bernoulli trial} is a random experiment with two possible outcomes, typically labeled as success and failure.
+Let $X_i$ be a sequence of independent Bernoulli random variables such that:
+\[
+P(X_i = 1) = p, \quad P(X_i = 0) = 1 - p.
+\]
+
+\textbf{Cybersecurity interpretation.}  
+Each trial may represent a security check within a fixed time interval, where success corresponds to an intrusion attempt or a breach.
+
+\subsection{Counting Processes}
+
+The associated counting process is defined as:
+\[
+N_n = \sum_{i=1}^{n} X_i,
+\]
+representing the total number of successes up to trial $n$.
+
+Counting processes are fundamental for modeling the cumulative number of intrusion attempts, alerts, or detected anomalies.
+
+\subsection{Law of Large Numbers}
+
+The \emph{Law of Large Numbers} states that:
+\[
+\frac{N_n}{n} \xrightarrow[]{\text{a.s.}} p \quad \text{as } n \to \infty.
+\]
+
+\textbf{Cybersecurity interpretation.}  
+Over long observation periods, the empirical frequency of attacks converges to their true underlying probability.
+This principle underlies statistical intrusion detection and anomaly detection techniques.
+
+\subsection{Relation to Intrusion Attempts}
+
+Bernoulli processes provide a simple yet effective model for intrusion attempts occurring at discrete times.
+They serve as building blocks for more refined models such as Poisson processes.
+
+\section{Poisson Process}
+
+\subsection{Definition}
+
+A \emph{Poisson process} $\{N(t), t \ge 0\}$ with rate $\lambda > 0$ satisfies:
+\begin{itemize}
+    \item $N(0) = 0$,
+    \item Independent increments,
+    \item Stationary increments,
+    \item For small $\Delta t$,
+    \[
+    P(N(t+\Delta t) - N(t) = 1) \approx \lambda \Delta t.
+    \]
+\end{itemize}
+
+\subsection{Distributional Properties}
+
+For any $t \ge 0$,
+\[
+N(t) \sim \text{Poisson}(\lambda t).
+\]
+
+\textbf{Cybersecurity interpretation.}  
+The Poisson process models the number of attacks or alerts occurring within a time window.
+
+\subsection{Interarrival Times}
+
+The waiting times between consecutive events are independent and exponentially distributed:
+\[
+T_i \sim \text{Exponential}(\lambda).
+\]
+
+This \emph{memoryless property} reflects the unpredictability of attack timing.
+
+\subsection{Independent and Stationary Increments}
+
+Independent increments imply that events in disjoint time intervals are unrelated.
+Stationary increments ensure that attack intensity depends only on interval length, not its position in time.
+
+\section{Wiener Process (Brownian Motion)}
+
+\subsection{Definition}
+
+A \emph{Wiener process} $\{W(t), t \ge 0\}$ is a continuous-time stochastic process satisfying:
+\begin{itemize}
+    \item $W(0) = 0$,
+    \item Independent increments,
+    \item Stationary increments,
+    \item $W(t) - W(s) \sim \mathcal{N}(0, t-s)$,
+    \item Continuous sample paths.
+\end{itemize}
+
+\subsection{Interpretation as Background Noise}
+
+In cybersecurity, Wiener processes model continuous background fluctuations such as:
+\begin{itemize}
+    \item Network traffic variability,
+    \item System load fluctuations,
+    \item Measurement noise in monitoring tools.
+\end{itemize}
+
+\subsection{Differences from Jump Processes}
+
+Unlike Poisson processes, Wiener processes:
+\begin{itemize}
+    \item Have continuous paths,
+    \item Exhibit Gaussian increments,
+    \item Do not model discrete event arrivals.
+\end{itemize}
+
+\textbf{Cybersecurity implication.}  
+While Poisson processes capture discrete attack events, Wiener processes represent continuous uncertainty.
+Realistic cybersecurity models often combine both.
+
+\section{Discussion}
+
+Bernoulli, Poisson, and Wiener processes provide complementary tools for modeling cybersecurity systems.
+Bernoulli processes capture discrete trials, Poisson processes describe random event arrivals, and Wiener processes represent continuous fluctuations.
+
+In the next chapter, these stochastic models are integrated using the Lebesgue--Stieltjes framework to construct cumulative risk and hybrid cybersecurity models.
+
+
+
+
+
+
+The structure of the thesis is as follows.
+Chapter~2 reviews the main interpretations of probability and introduces the axiomatic approach that underpins modern probability theory.
+Chapter~3 presents the essential concepts of measure theory required for probabilistic modeling.
+Chapter~4 introduces the Lebesgue--Stieltjes integral and discusses its properties and interpretations.
+Chapter~5 focuses on stochastic processes relevant to cybersecurity, including Bernoulli, Poisson, and Wiener processes.
+Chapter~6 applies these mathematical tools to cybersecurity risk modeling.
+Chapter~7 presents numerical simulations and computational methods.
+Finally, Chapter~8 discusses applications, limitations, and possible directions for future research, while Chapter~9 concludes the thesis.
+
+Through this interdisciplinary approach, the thesis aims to bridge rigorous mathematical theory and practical cybersecurity modeling, demonstrating how advanced probabilistic tools can enhance the understanding and analysis of complex security systems.
